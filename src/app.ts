@@ -1,6 +1,11 @@
 import bodyParser from "body-parser";
 import Express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import connect from "./config/mongo.js";
+
+dotenv.config();
+connect();
 
 const app = Express();
 app.use(bodyParser.json());
