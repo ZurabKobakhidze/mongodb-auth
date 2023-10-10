@@ -1,9 +1,29 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
+import { v4 as uuid } from "uuid";
 import { UserType } from "types";
 
-const userSchema = new mongoose.Schema<UserType>({
+const { String } = Schema.Types;
+
+const userSchema = new Schema<UserType>({
   name: {
-    type: mongoose.Schema.Types.String,
+    type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  id: {
+    type: String,
+    required: true,
+    default: uuid,
+  },
 });
+
+const User = model("User", userSchema);
+
+export default User;
